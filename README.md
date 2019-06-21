@@ -1,6 +1,6 @@
 # The Complete JavaScript Course 2019: Build Real Projects - Udemy Course
 
-_The text below is from udemy instructor Jonas Schmedtmann who teach this course._
+_The text below is from udemy instructor Jonas Schmedtmann who teach [this course](https://www.udemy.com/the-complete-javascript-course/)._
 
 ## So what is the course about?
 This is a truly complete JavaScript course, that goes beyond what other JavaScript courses out there teach you. 
