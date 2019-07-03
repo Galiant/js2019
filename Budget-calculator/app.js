@@ -133,7 +133,7 @@ var UIController = (function() {
       } else if (type === 'exp') {
         element = DOMstrings.expensesContainer;
         html =
-          '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value"%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline" /></button></div></div></div>';
+          '<div class="item clearfix" id="exp-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline" /></button></div></div></div>';
       }
 
       // Replace placeholder text
@@ -143,6 +143,11 @@ var UIController = (function() {
 
       // Insert HTML into the DOM
       document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
+    },
+
+    deleteListItem: function(selectorID) {
+      var el = document.getElementById(selectorID);
+      el.parentNode.removeChild(el);
     },
 
     clearFields: function() {
@@ -197,7 +202,7 @@ var controller = (function(budgetCtrl, UICtrl) {
     });
     document
       .querySelector(DOM.container)
-      .addEventListener('click', crtlDeleteItem);
+      .addEventListener('click', ctrlDeleteItem);
   };
 
   var updateBudget = function() {
@@ -247,8 +252,10 @@ var controller = (function(budgetCtrl, UICtrl) {
       budgetCtrl.deleteItem(type, ID);
 
       // 2. Delete the item from the UI
+      UICtrl.deleteListItem(itemID);
 
       // 3. Update and show the new budget
+      updateBudget();
     }
   };
 
